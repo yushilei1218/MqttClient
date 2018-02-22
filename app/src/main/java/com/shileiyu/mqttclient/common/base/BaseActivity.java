@@ -7,6 +7,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Toast;
@@ -137,5 +138,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public void onError(int imageId, String msg, String btnText, View.OnClickListener onClickListener) {
         mHolder.onError(imageId, msg, btnText, onClickListener);
+    }
+
+    public void log(String msg) {
+        Log.d(getTAG(), msg);
     }
 }
