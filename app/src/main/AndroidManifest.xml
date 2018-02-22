@@ -23,6 +23,11 @@
             android:name=".ui.home.HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
+        <service
+            android:name=".common.service.MqttService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>
