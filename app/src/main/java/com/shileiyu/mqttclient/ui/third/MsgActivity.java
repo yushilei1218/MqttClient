@@ -114,6 +114,7 @@ public class MsgActivity extends BaseActivity {
     private void refresh(IMMessage imMessage) {
         mData.add(imMessage);
         mAdapter.notifyDataSetChanged();
+        mMsgLv.smoothScrollToPosition(mData.size() - 1);
     }
 
     @OnClick(R.id.act_msg_send)
