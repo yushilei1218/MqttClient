@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.shileiyu.mqttclient">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".common.base.BaseApp"
         android:allowBackup="true"
@@ -29,8 +33,13 @@
             android:exported="false">
         </service>
 
-        <activity android:name=".ui.third.PahoActivity">
-        </activity>
+        <activity android:name=".ui.third.PahoActivity"/>
+
+        <service
+            android:name="org.eclipse.paho.android.service.MqttService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>

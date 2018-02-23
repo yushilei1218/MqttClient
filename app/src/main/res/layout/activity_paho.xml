@@ -7,4 +7,19 @@
     android:layout_height="match_parent"
     tools:context="com.shileiyu.mqttclient.ui.third.PahoActivity">
 
+    <EditText
+        android:id="@+id/act_paho_host_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/act_paho_connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+        app:layout_constraintTop_toBottomOf="@+id/act_paho_host_input"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.shileiyu.mqttclient.common.util;
 
 import android.net.ConnectivityManager;
+import android.provider.Settings;
 
 import com.shileiyu.mqttclient.common.base.BaseApp;
 
@@ -19,5 +20,10 @@ public class Util {
                     cm.getActiveNetworkInfo().isAvailable() &&
                     cm.getActiveNetworkInfo().isConnected();
         }
+    }
+
+    public static String getClinetId() {
+        return Settings.Secure.getString(
+                BaseApp.AppContext.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 }
