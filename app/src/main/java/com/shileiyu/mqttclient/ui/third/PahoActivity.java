@@ -13,6 +13,7 @@ import com.shileiyu.mqttclient.common.util.Util;
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import butterknife.BindView;
@@ -35,6 +36,7 @@ public class PahoActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        mHostInput.setText("tcp://10.2.2.205:61613");
     }
 
     @OnClick(R.id.act_paho_connect)
@@ -48,7 +50,13 @@ public class PahoActivity extends BaseActivity {
     private void connect(String serverURI) {
         mClient = new MqttAndroidClient(this, serverURI, Util.getClinetId());
         try {
-            mClient.connect(this, new IMqttActionListener() {
+
+            MqttConnectOptions options = new MqttConnectOptions();
+            options.setUserName("admin");
+            options.setPassword("password".toCharArray());
+            options.setKeepAliveInterval(5);
+
+            mClient.connect(options, this, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     String msg = "connect onSuccess";
@@ -58,7 +66,7 @@ public class PahoActivity extends BaseActivity {
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    String msg = "connect onFailure";
+                    String msg = "connect onFailure" + exception.getMessage();
                     log(msg);
                     showToast(msg);
                 }
