@@ -28,6 +28,9 @@
             android:enabled="true"
             android:exported="false">
         </service>
+
+        <activity android:name=".ui.third.PahoActivity">
+        </activity>
     </application>
 
 </manifest>
